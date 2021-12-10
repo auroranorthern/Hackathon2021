@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:analytics/analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -102,6 +104,24 @@ class PhotoboothPreview extends StatelessWidget {
             },
           ),
         ),
+        if (state.examplePhoto != null)
+          Align(
+            alignment: Alignment.topLeft,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 12, top: 12),
+              child: SizedBox(
+                width: 300,
+                height: 300,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                    child: Image(image: AssetImage(state.examplePhoto!.path)),
+                  ),
+                ),
+              ),
+            ),
+          ),
         const Align(
           alignment: Alignment.bottomLeft,
           child: Padding(
@@ -127,12 +147,24 @@ class PhotoboothPreview extends StatelessWidget {
         CharactersIconLayout(children: children),
         Align(
           alignment: Alignment.bottomCenter,
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 30),
-            child: ShutterButton(
-              key: const Key('photoboothPreview_photo_shutterButton'),
-              onCountdownComplete: onSnapPressed,
-            ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              if (state.examplePhoto != null)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 30),
+                  child: ShutterButton(
+                    key: const Key('photoboothPreview_photo_shutterButton'),
+                    onCountdownComplete: onSnapPressed,
+                  ),
+                ),
+              if (state.examplePhoto == null)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 30),
+                  child: PlayButton(),
+                ),
+            ],
           ),
         ),
       ],
