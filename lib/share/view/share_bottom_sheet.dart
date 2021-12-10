@@ -58,6 +58,8 @@ class ShareBottomSheet extends StatelessWidget {
                       TwitterButton(),
                       SizedBox(height: 18),
                       FacebookButton(),
+                      SizedBox(height: 18),
+                      GetShareURLButton(),
                     ],
                   ),
                   const SizedBox(height: 42),

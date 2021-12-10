@@ -2,7 +2,7 @@ part of 'share_bloc.dart';
 
 enum ShareStatus { initial, loading, success, failure }
 
-enum ShareUrl { none, twitter, facebook }
+enum ShareUrl { none, twitter, facebook, firebase }
 
 extension ShareStatusX on ShareStatus {
   bool get isLoading => this == ShareStatus.loading;
@@ -22,6 +22,7 @@ class ShareState extends Equatable {
     this.isDownloadRequested = false,
     this.isUploadRequested = false,
     this.shareUrl = ShareUrl.none,
+    this.firebaseShareUrl = '',
   });
 
   final ShareStatus compositeStatus;
@@ -31,6 +32,7 @@ class ShareState extends Equatable {
   final String explicitShareUrl;
   final String twitterShareUrl;
   final String facebookShareUrl;
+  final String firebaseShareUrl;
   final bool isUploadRequested;
   final bool isDownloadRequested;
   final ShareUrl shareUrl;
@@ -56,6 +58,7 @@ class ShareState extends Equatable {
     String? explicitShareUrl,
     String? twitterShareUrl,
     String? facebookShareUrl,
+    String? firebaseShareUrl,
     bool? isUploadRequested,
     bool? isDownloadRequested,
     ShareUrl? shareUrl,
@@ -68,6 +71,7 @@ class ShareState extends Equatable {
       explicitShareUrl: explicitShareUrl ?? this.explicitShareUrl,
       twitterShareUrl: twitterShareUrl ?? this.twitterShareUrl,
       facebookShareUrl: facebookShareUrl ?? this.facebookShareUrl,
+      firebaseShareUrl: firebaseShareUrl ?? this.firebaseShareUrl,
       isUploadRequested: isUploadRequested ?? this.isUploadRequested,
       isDownloadRequested: isDownloadRequested ?? this.isDownloadRequested,
       shareUrl: shareUrl ?? this.shareUrl,

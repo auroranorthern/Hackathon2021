@@ -61,6 +61,8 @@ class ShareDialog extends StatelessWidget {
                         TwitterButton(),
                         SizedBox(width: 36),
                         FacebookButton(),
+                        SizedBox(width: 36),
+                        GetShareURLButton(),
                       ],
                     ),
                     const SizedBox(height: 30),
