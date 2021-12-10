@@ -131,17 +131,6 @@ class PhotoboothState extends Equatable {
       examplePhoto: examplePhoto ?? this.examplePhoto,
     );
   }
-
-  PhotoboothState clearExamplePhoto() {
-    return PhotoboothState(
-      aspectRatio: aspectRatio,
-      image: image,
-      imageId: imageId,
-      characters: characters,
-      stickers: stickers,
-      selectedAssetId: selectedAssetId,
-    );
-  }
 }
 
 extension PhotoAssetsX on List<PhotoAsset> {
