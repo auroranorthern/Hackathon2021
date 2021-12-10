@@ -17,10 +17,12 @@ class PhotoboothPreview extends StatelessWidget {
     Key? key,
     required this.preview,
     required this.onSnapPressed,
+    required this.onAddFriendPressed,
   }) : super(key: key);
 
   final Widget preview;
   final VoidCallback onSnapPressed;
+  final VoidCallback onAddFriendPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -89,6 +91,20 @@ class PhotoboothPreview extends StatelessWidget {
           context
               .read<PhotoboothBloc>()
               .add(const PhotoCharacterToggled(character: Assets.dino));
+        },
+      ),
+      CharacterIconButton(
+        key: const Key('photoboothView_user_characterIconButton'),
+        icon: const AssetImage('assets/icons/friend_icon.png'),
+        label: l10n.dashButtonLabelText,
+        isSelected: state.isDashSelected,
+        onPressed: () {
+          trackEvent(
+            category: 'button',
+            action: 'click-add-friend',
+            label: 'add-user-friend',
+          );
+          onAddFriendPressed();
         },
       ),
     ];

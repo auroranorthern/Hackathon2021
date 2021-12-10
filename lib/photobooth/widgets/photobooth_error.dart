@@ -6,7 +6,7 @@ import 'package:photobooth_ui/photobooth_ui.dart';
 class PhotoboothError extends StatelessWidget {
   const PhotoboothError({Key? key, required this.error}) : super(key: key);
 
-  final CameraException error;
+  final Exception error;
 
   @override
   Widget build(BuildContext context) {

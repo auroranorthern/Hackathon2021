@@ -20,6 +20,8 @@ dependencies:
   bloc: ^7.0.0
   camera:
     path: packages/camera/camera
+  camera_webrtc:
+    path: packages/camera/camera_webrtc
   cross_file: ^0.3.1
   equatable: ^2.0.0
   flutter_bloc: ^7.0.0
