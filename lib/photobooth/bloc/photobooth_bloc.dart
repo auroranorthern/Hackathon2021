@@ -1,8 +1,10 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:bloc/bloc.dart';
 import 'package:camera/camera.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/widgets.dart';
 import 'package:photobooth_ui/photobooth_ui.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:uuid/uuid.dart';
@@ -75,6 +77,21 @@ class PhotoboothBloc extends Bloc<PhotoboothEvent, PhotoboothState> {
       );
     } else if (event is PhotoTapped) {
       yield state.copyWith(selectedAssetId: emptyAssetId);
+    } else if (event is PlayTapped) {
+      const photos = [
+        Asset(
+          name: 'example_photo_1.png',
+          path: 'assets/images/example_photo_1.png',
+          size: Size(400, 500),
+        ),
+        Asset(
+          name: 'example_photo_2.png',
+          path: 'assets/images/example_photo_2.png',
+          size: Size(400, 500),
+        )
+      ];
+      final index = Random().nextInt(photos.length);
+      yield state.copyWith(examplePhoto: photos[index]);
     }
   }
 

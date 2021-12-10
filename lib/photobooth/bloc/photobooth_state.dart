@@ -78,6 +78,7 @@ class PhotoboothState extends Equatable {
     this.selectedAssetId = emptyAssetId,
     this.image,
     this.imageId = '',
+    this.examplePhoto,
   });
 
   bool get isDashSelected => characters.containsAsset(named: 'dash');
@@ -98,6 +99,7 @@ class PhotoboothState extends Equatable {
   final List<PhotoAsset> characters;
   final List<PhotoAsset> stickers;
   final String selectedAssetId;
+  final Asset? examplePhoto;
 
   @override
   List<Object?> get props => [
@@ -107,6 +109,7 @@ class PhotoboothState extends Equatable {
         characters,
         stickers,
         selectedAssetId,
+        examplePhoto,
       ];
 
   PhotoboothState copyWith({
@@ -116,6 +119,7 @@ class PhotoboothState extends Equatable {
     List<PhotoAsset>? characters,
     List<PhotoAsset>? stickers,
     String? selectedAssetId,
+    Asset? examplePhoto,
   }) {
     return PhotoboothState(
       aspectRatio: aspectRatio ?? this.aspectRatio,
@@ -124,6 +128,18 @@ class PhotoboothState extends Equatable {
       characters: characters ?? this.characters,
       stickers: stickers ?? this.stickers,
       selectedAssetId: selectedAssetId ?? this.selectedAssetId,
+      examplePhoto: examplePhoto ?? this.examplePhoto,
+    );
+  }
+
+  PhotoboothState clearExamplePhoto() {
+    return PhotoboothState(
+      aspectRatio: aspectRatio,
+      image: image,
+      imageId: imageId,
+      characters: characters,
+      stickers: stickers,
+      selectedAssetId: selectedAssetId,
     );
   }
 }

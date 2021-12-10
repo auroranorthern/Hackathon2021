@@ -70,3 +70,11 @@ class PhotoDeleteSelectedStickerTapped extends PhotoboothEvent {
 class PhotoTapped extends PhotoboothEvent {
   const PhotoTapped();
 }
+
+class PlayTapped extends PhotoboothEvent {
+  const PlayTapped();
+}
+
+class ShutterTapped extends PhotoboothEvent {
+  const ShutterTapped();
+}

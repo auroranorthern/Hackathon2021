@@ -1,8 +1,10 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:io_photobooth/l10n/l10n.dart';
+import 'package:io_photobooth/photobooth/photobooth.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:photobooth_ui/photobooth_ui.dart';
+import 'package:provider/src/provider.dart';
 import 'package:very_good_analysis/very_good_analysis.dart';
 
 const _shutterCountdownDuration = Duration(seconds: 3);
@@ -64,6 +66,7 @@ class _ShutterButtonState extends State<ShutterButton>
     await audioPlayer.seek(null);
     unawaited(audioPlayer.play());
     unawaited(controller.reverse(from: 1));
+    context.read<PhotoboothBloc>().add(const ShutterTapped());
   }
 
   @override
