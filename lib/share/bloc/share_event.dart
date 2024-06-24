@@ -23,6 +23,10 @@ class ShareOnFacebookTapped extends ShareTapped {
   const ShareOnFacebookTapped();
 }
 
+class GetShareURLTapped extends ShareTapped {
+  const GetShareURLTapped();
+}
+
 class _ShareCompositeSucceeded extends ShareEvent {
   const _ShareCompositeSucceeded({required this.bytes});
   final Uint8List bytes;

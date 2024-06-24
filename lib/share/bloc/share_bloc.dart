@@ -23,7 +23,7 @@ class ShareBloc extends Bloc<ShareEvent, ShareState> {
     required this.shareText,
     bool isSharingEnabled = const bool.fromEnvironment(
       'SHARING_ENABLED',
-      defaultValue: false,
+      defaultValue: true,
     ),
   })  : _photosRepository = photosRepository,
         _isSharingEnabled = isSharingEnabled,
@@ -69,8 +69,17 @@ class ShareBloc extends Bloc<ShareEvent, ShareState> {
   ) async* {
     if (!_isSharingEnabled) return;
 
-    final shareUrl =
-        event is ShareOnTwitterTapped ? ShareUrl.twitter : ShareUrl.facebook;
+    final shareUrl = () {
+      if (event is ShareOnTwitterTapped) {
+        return ShareUrl.twitter;
+      }
+      if (event is ShareOnFacebookTapped) {
+        return ShareUrl.facebook;
+      }
+      if (event is GetShareURLTapped) {
+        return ShareUrl.firebase;
+      }
+    }();
 
     yield state.copyWith(
       uploadStatus: ShareStatus.initial,
